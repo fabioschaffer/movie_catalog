@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import Layout from './Layout';
+import Dashboard from './Dashboard';
+import Category from './Category';
+import Login from './Login';
+import { Context } from './context/context';
 
 function App() {
-  return (
-    <div>
-      hello
-    </div>
+  const authContext = useContext(Context);
+
+  const routes = (
+    <Switch>
+      <Route path="/" exact component={Dashboard} />
+      <Route path="/category" exact component={Category} />
+      <Redirect to="/" />
+    </Switch>
   );
-}
+
+  let content = <Login />;
+  if (authContext.isAuth) {
+    content =
+      <Layout>
+        {routes}
+      </Layout>;
+  };
+
+  return content;
+};
 
 export default App;

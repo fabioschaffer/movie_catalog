@@ -1,0 +1,11 @@
+.Container {
+    padding-left: 160px ; 
+    display: flex;
+    align-items: stretch;
+    background-color: lightgray;
+    border: 1px solid black;
+  }
+  
+  .Container > div {
+    line-height: 60px;
+  }
