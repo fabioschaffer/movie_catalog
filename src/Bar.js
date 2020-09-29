@@ -14,7 +14,7 @@ function Bar() {
         <div className={classes.Container}>
             <div style={{ flexGrow: "1" }}></div>
             <div>
-                <button onClick={LogoutHandler}>Logout</button>
+                <button className="btn btn-info" onClick={LogoutHandler}>Logout</button>
             </div>
         </div>
     )

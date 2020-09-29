@@ -1,0 +1,16 @@
+.Actions{
+    background-color: darkgray;
+    min-height: 60px;
+    align-items: center;
+    display: flex;
+}
+.Actions i {
+    font-size: 40px;
+    display: inline;
+    padding: 10px;
+}
+
+.Actions :hover{
+    cursor: pointer;
+    background-color: gray;
+}

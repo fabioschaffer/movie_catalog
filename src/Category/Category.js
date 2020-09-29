@@ -1,7 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState,useCallback  } from 'react';
 //import axios from 'axios';
+import classes from './Category.module.css';
+import CategoryEdit from './CategoryEdit';
+import CategoryList from './CategoryList';
 
 function Category() {
+    const [add, setAdd] = useState(false);
+    const [list, setList] = useState(true);
+    const [id, setId] = useState('');
 
     useEffect(() => {
 
@@ -55,8 +61,40 @@ function Category() {
 
     }, []);
 
+    function ListHandler() {
+        setId('');
+        setList(true);
+        setAdd(false);
+    }
+
+    function AddHandler() {
+        setId('');
+        setList(false);
+        setAdd(true);
+    }
+
+    const SetIdHandler = useCallback((id) => {
+        setId(id);
+        alert(id);
+      }, []);
+
+    function EditHandler(){
+        setList(false);
+        setAdd(true);
+    }
+
     return (
-        <div>category</div>
+        <React.Fragment>
+            <div className={classes.Actions}>
+                <i className="material-icons" title="Listagem" onClick={ListHandler}>list</i>
+                <i className="material-icons" title="Novo" onClick={AddHandler}>add</i>
+                <i className="material-icons" title="Editar" onClick={EditHandler}>edit</i>
+                <i className="material-icons" title="Excluir">delete</i>
+                <i className="material-icons" title="Pesquisar">search</i>
+            </div>
+            {add && <CategoryEdit id = {id} />}
+            {list && <CategoryList Id = {SetIdHandler} />}
+        </React.Fragment>
     )
 };
 

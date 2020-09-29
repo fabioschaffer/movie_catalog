@@ -56,7 +56,7 @@ function Login() {
                 <input></input>
             </p>
             <p>
-                <button onClick={LoginHandler}>Login</button>
+                <button className="btn btn-info" onClick={LoginHandler}>Login</button>
             </p>
         </form>
     )
