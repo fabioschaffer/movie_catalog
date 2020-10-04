@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Layout from './Layout';
 import Dashboard from './Dashboard';
 import Category from './Category/Category';
+import Movie from './Movie/Movie';
 import Login from './Login';
 import { Context } from './context/context';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,6 +15,7 @@ function App() {
     <Switch>
       <Route path="/" exact component={Dashboard} />
       <Route path="/category" exact component={Category} />
+      <Route path="/movie" exact component={Movie} />
       <Redirect to="/" />
     </Switch>
   );

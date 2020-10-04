@@ -6,7 +6,8 @@ function Menu() {
     return(
         <div className={classes.sidenav}>
             <NavLink to='/'>Dashboard</NavLink>
-            <NavLink to='/category'>Categoria</NavLink>
+            <NavLink to='/category'>Categorias</NavLink>
+            <NavLink to='/movie'>Filmes</NavLink>
         </div>
     )
 };
