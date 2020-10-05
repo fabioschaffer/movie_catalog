@@ -1,62 +1,35 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import classes from './Login.module.css';
 import { Context } from './context/context';
 
-// import * as firebase from "firebase/app";
-
-// import "firebase/auth";
-// import "firebase/database";
-
 function Login() {
     const context = useContext(Context);
+    const [email, setEmail] = useState('');
+    const [pwd, setPwd] = useState('');
+
+    const NewUserHandler = (e) => {
+        e.preventDefault();
+        context.login(false, email, pwd);
+    }
 
     const LoginHandler = (e) => {
         e.preventDefault();
-
-        // var firebaseConfig = {
-        //     apiKey: "AIzaSyCJzHkD08OJJDfrGlkFF1Ie6ZPBqaam470",
-        //     authDomain: "moviecatalog-3aa25.firebaseapp.com",
-        //     databaseURL: "https://moviecatalog-3aa25.firebaseio.com",
-        //     projectId: "moviecatalog-3aa25",
-        //     storageBucket: "moviecatalog-3aa25.appspot.com",
-        //     messagingSenderId: "847945380585",
-        //     appId: "1:847945380585:web:401ffa2a74f51e4c213678"
-        // };
-
-        // firebase.initializeApp(firebaseConfig);
-
-        // const email = 'test@test.com';
-        // const password = '123456';
-
-        // firebase.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
-        //     console.log(user);
-        // }, function (error) {
-        //     console.log(error);
-        // });
-
-        // firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
-        //     firebase.database().ref('category').set({
-        //         description: 'ação 4'
-        //     });
-        // }, function (error) {
-        //     console.log(error);
-        // });
-
-        context.login();
+        context.login(true, email, pwd);
     }
 
     return (
         <form className={classes.Form}>
             <p>
                 <label>Login:</label>
-                <input></input>
+                <input value={email} onChange={(e) => setEmail(e.target.value)}></input>
             </p>
             <p>
                 <label>Senha:</label>
-                <input></input>
+                <input type="password" value={pwd} onChange={(e) => setPwd(e.target.value)}></input>
             </p>
             <p>
-                <button className="btn btn-info" onClick={LoginHandler}>Entrar</button>
+                <button className="btn btn-info" onClick={LoginHandler}>Entrar</button>{' ou '}
+                <button className="btn btn-info" onClick={NewUserHandler}>Cadastre-se</button>
             </p>
         </form>
     )
